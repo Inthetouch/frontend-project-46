@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-
-const { Command } = require('commander');
+import { Command } from 'commander';
+import parser from './parser.js';
 
 const program = new Command();
 
@@ -10,5 +10,9 @@ program
   .argument('<filepath1>')
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format')
+  .action((filepath1, filepath2) => {
+    console.log(parser(filepath1))
+    console.log(parser(filepath2));
+  })
 
-program.parse(process.argv);
+program.parse();
