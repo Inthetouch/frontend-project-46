@@ -13,3 +13,5 @@
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Inthetouch/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Inthetouch/frontend-project-46/actions)
+### SonarQube status:
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Inthetouch_frontend-project-46&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Inthetouch_frontend-project-46)
