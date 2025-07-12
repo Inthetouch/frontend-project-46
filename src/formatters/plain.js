@@ -1,5 +1,5 @@
 const formatValue = (value) => {
-  if (typeof value === 'string' && value !== null) {
+  if (typeof value === 'object' && value !== null) {
     return '[complex value]'
   }
   if (typeof value === 'string') {
