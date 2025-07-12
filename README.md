@@ -3,6 +3,8 @@
 
 ## Установка
 
+````make install```
+
 ## Возможности утилиты
 - Поддержка разных входных форматов: yaml, json
 - Генерация отчета в виде plain text, stylish и json
@@ -10,6 +12,9 @@
 ### Пример использования:
 Для вывода справки необходимо ввести ```gendiff --help или gendiff -h```  
 Пример запуска [здесь](https://asciinema.org/a/EEviugVbD9FQx8EPUXHccganh)
+
+### Демонстрация работы программы и примеры сравнения в разных стилях:
+[Ссылка](https://asciinema.org/a/tWfqBXfBjyx6z8bEmfXrdNT3D)
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Inthetouch/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Inthetouch/frontend-project-46/actions)
