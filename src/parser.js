@@ -4,18 +4,25 @@ import yaml from 'js-yaml'
 
 const getFileFormat = filepath => path.extname(filepath).slice(1)
 
-export function parse(filepath) {
+function readFile(filepath) {
   const absolutePath = path.resolve(process.cwd(), filepath)
-  const content = fs.readFileSync(absolutePath, 'utf-8')
-  const fileFormat = getFileFormat(absolutePath)
+  return fs.readFileSync(absolutePath, 'utf-8')
+}
 
-  if (fileFormat === 'json') {
-    return JSON.parse(content)
+function parseContent(content, format) {
+  switch (format) {
+    case 'json':
+      return JSON.parse(content)
+    case 'yml':
+    case 'yaml':
+      return yaml.load(content)
+    default:
+      throw new Error(`Не известный формат: ${format}`)
   }
-  else if (fileFormat === 'yml' || fileFormat === 'yaml') {
-    return yaml.load(content)
-  }
-  else {
-    throw new Error(`Unsupported file format: ${fileFormat}`)
-  }
+}
+
+export function parseFile(filepath) {
+  const content = readFile(filepath)
+  const format = getFileFormat(filepath)
+  return parseContent(content, format)
 }

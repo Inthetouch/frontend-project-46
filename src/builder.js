@@ -1,4 +1,3 @@
-import { isObject } from '../src/formatters/stylish.js'
 import _ from 'lodash'
 
 export function buildAnser(data1, data2) {
@@ -10,7 +9,7 @@ export function buildAnser(data1, data2) {
     const value1 = data1[key]
     const value2 = data2[key]
 
-    if (isObject(value1) && isObject(value2)) {
+    if (_.isPlainObject(value1) && _.isPlainObject(value2)) {
       return {
         key,
         type: 'nested',

@@ -1,5 +1,3 @@
-const isObject = value => typeof value === 'object' && value !== null
-
 export function stringify(value, deep) {
   if (typeof value !== 'object' || value === null) {
     return String(value)
@@ -42,5 +40,3 @@ export function stylish(diff) {
   }
   return iter(diff, 1)
 }
-
-export { isObject }

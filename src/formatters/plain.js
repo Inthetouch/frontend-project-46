@@ -10,24 +10,31 @@ const formatValue = (value) => {
 
 export function plain(tree) {
   const iter = (nodes, parentPath) => {
-    const lines = nodes.filter(node => node.type !== 'unchanged').map((node) => {
+    const lines = nodes.reduce((acc, node) => {
       const fullPath = parentPath ? `${parentPath}.${node.key}` : node.key
       switch (node.type) {
         case 'nested':
-          return iter(node.children, fullPath)
+          acc.push(iter(node.children, fullPath))
+          break
         case 'added':
-          return `Property '${fullPath}' was added with value: ${formatValue(node.value)}`
+          acc.push(`Property '${fullPath}' was added with value: ${formatValue(node.value)}`)
+          break
         case 'removed':
-          return `Property '${fullPath}' was removed`
+          acc.push(`Property '${fullPath}' was removed`)
+          break
         case 'changed':
           const value1 = formatValue(node.oldValue)
           const value2 = formatValue(node.newValue)
-          return `Property '${fullPath}' was updated. From ${value1} to ${value2}`
+          acc.push(`Property '${fullPath}' was updated. From ${value1} to ${value2}`)
+          break
+        case 'unchanged':
+          break
         default:
           throw new Error(`Unknown node type: ${node.type}`)
       }
-    })
-    return lines.join('\n')
+      return acc
+    }, [])
+    return lines.flat().join('\n')
   }
   return iter(tree, '')
 }
