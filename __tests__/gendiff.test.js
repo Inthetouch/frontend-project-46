@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
 import path, { dirname } from 'path'
-import { genDiff } from '../src/difference.js'
+import genDiff from '../src/difference.js'
 import fs from 'fs'
 
 const __filename = fileURLToPath(import.meta.url)
