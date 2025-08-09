@@ -22,11 +22,12 @@ export function plain(tree) {
         case 'removed':
           acc.push(`Property '${fullPath}' was removed`)
           break
-        case 'changed':
+        case 'changed': {
           const value1 = formatValue(node.oldValue)
           const value2 = formatValue(node.newValue)
           acc.push(`Property '${fullPath}' was updated. From ${value1} to ${value2}`)
           break
+        }
         case 'unchanged':
           break
         default:

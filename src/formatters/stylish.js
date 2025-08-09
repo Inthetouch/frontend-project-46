@@ -22,10 +22,11 @@ export function stylish(diff) {
       switch (node.type) {
         case 'nested':
           return `${currentIndent}  ${node.key}: ${iter(node.children, deep + 1)}`
-        case 'changed':
+        case 'changed': {
           const line1 = `${currentIndent}- ${node.key}: ${stringify(node.oldValue, deep + 1)}`
           const line2 = `${currentIndent}+ ${node.key}: ${stringify(node.newValue, deep + 1)}`
           return `${line1}\n${line2}`
+        }
         case 'added':
           return `${currentIndent}+ ${node.key}: ${stringify(node.value, deep + 1)}`
         case 'removed':
